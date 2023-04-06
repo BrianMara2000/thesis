@@ -27,8 +27,10 @@ class UserController extends Controller
             'school_id' => 'required|numeric|digits_between:9,9',
             'contact_number' => 'required|regex:/(^(09)\d{9}$)/',
             'parent_cnumber' => 'required|regex:/(^(09)\d{9}$)/',
-            'department' => 'required|in:option1,option2,option3,option4',
-            'name' => ['required', 'min:3'],
+            'department' => 'required|in:CET,TC,CHMTN,SHS',
+            'last_name' => ['required', 'min:3'],
+            'first_name' => ['required', 'min:3'],
+            'middle_initial' => 'nullable|string|max:1',
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6'
             // 'password_confirmation' => ['required']
@@ -67,13 +69,13 @@ class UserController extends Controller
         if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
             // Auth::user()->update(['is_safe' => true]);
-
-
             return redirect('/sensorData')->with('message', 'You are now logged in');
         }
 
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email'); 
     }
+    
+    
 }
 

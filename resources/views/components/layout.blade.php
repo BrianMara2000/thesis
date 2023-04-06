@@ -93,7 +93,9 @@
           </div>
     </div>
     
-    {{ $slot }}
+    <main>
+      {{ $slot }}
+    </main>
 
     
   <footer class=" container bottom-0 mx-auto p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
@@ -122,6 +124,6 @@
     </span>
   </footer>
   <x-flash-message />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script> --}}
 </body>
 </html>
